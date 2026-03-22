@@ -7,41 +7,30 @@ pipeline {
         DOCKERHUB_PWD = credentials('CredentialID_DockerHubPWD')
     }
     stages {
-
         stage("Check out") {
             steps {
                 git branch: 'main', url: 'https://github.com/ddeksan/comp367-lab2'
             }
         }
-
         stage("Build maven project") {
             steps {
                 sh 'mvn clean install'
             }
         }
-
-        stage("Unit test") {
-            steps {
-                sh "mvn test"
-            }
-        }
-
         stage("Docker build") {
             steps {
                 script {
-                    sh 'docker build -t ddeksan/myapp:1.0 .'
+                    sh 'docker build -t deksansaidd/myapp:1.0 .'
                 }
             }
         }
-
         stage("Docker login") {
             steps {
                 script {
-                    sh 'docker login -u ddeksan -p ${DOCKERHUB_PWD}'
+                    sh 'docker login -u deksansaidd -p ${DOCKERHUB_PWD}'
                 }
             }
         }
-
         stage("Docker push") {
             steps {
                 script {
@@ -49,6 +38,5 @@ pipeline {
                 }
             }
         }
-
     }
 }
