@@ -10,7 +10,7 @@ pipeline {
 
         stage("Check out") {
             steps {
-                git branch: 'main', url: 'https://github.com/deksansaidd/comp367-lab2'
+                git branch: 'main', url: 'https://github.com/ddeksan/comp367-lab2'
             }
         }
 
@@ -29,7 +29,7 @@ pipeline {
         stage("Docker build") {
             steps {
                 script {
-                    sh 'docker build -t deksansaidd/myapp:1.0 .'
+                    sh 'docker build -t ddeksan/myapp:1.0 .'
                 }
             }
         }
@@ -37,7 +37,7 @@ pipeline {
         stage("Docker login") {
             steps {
                 script {
-                    sh 'docker login -u deksansaidd -p ${DOCKERHUB_PWD}'
+                    sh 'docker login -u ddeksan -p ${DOCKERHUB_PWD}'
                 }
             }
         }
