@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage("Check out") {
             steps {
-                git branch: 'main', url: 'https://github.com/ddeksan/comp367-lab2'
+                git branch: 'main', url: 'https://github.com/deksansaidd/comp367-lab2'
             }
         }
         stage("Build maven project") {
